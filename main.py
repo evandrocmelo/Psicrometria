@@ -9,9 +9,9 @@ Variáveis importantes:
    rm    - Razão de mistura (%)
    tpo   - Temperatura do ponto de orvalho (°C)
    tbm   - Temperatura do bulbo molhado (°C)
-   e     - Enthalpy (kJ/kg)
+   e     - Entalpia (kJ/kg)
    ve    - Volume específico (m3/kg)
-   q     - Vazão total de ar  (m3/hora)
+   q     - Vazão de ar  (m3/hora)
    
    Não há validação dos dados de entrada
 '''
