@@ -1,5 +1,5 @@
-'''
-        $$$ Cálculo das condições psicométricas do ar úmido $$$$
+"""
+ Cálculo das condições psicométricas do ar úmido
 Variáveis importantes:
    patm  - pressão barométrica local (kPa)
    tbs   - Temperatura do bulbo seco (°C)
@@ -14,7 +14,7 @@ Variáveis importantes:
    q     - Vazão de ar  (m3/hora)
    
    Não há validação dos dados de entrada
-'''
+"""
 
 def pressao_vapor_saturado(t):
     # cálculo da pressão do vapor de saturação
