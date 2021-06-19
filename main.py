@@ -172,7 +172,8 @@ def pe_tbs_tpo():
 
 def aquece_resfria():
     # Processo 1 - Aquecimento ou resfriamento
-    global tbs, tbm, patm, tbs, ur, pvs, pv, rm, tpo, ve, e
+    global tbs,  tbm,  tpo,  ur,  rm,  pvs,  pv,  ve,  e, patm
+    global tbs2, tbm2, tpo2, ur2, rm2, pvs2, pv2, ve2, e2
     #
     # Dados Pontos de Estado 1 e 2
     print('********* Ponto de Estado 1 **********')
@@ -209,38 +210,17 @@ def aquece_resfria():
         tbm2=tbs2
     ve2=volume_especifico(tbs2,rm2)
     # Resultados do Ponto de Estado 1 e 2
-    #                      Ponto de Estado 1
-    print('\n************** Aquecimento / Resfriamento***************')
-    print('************** Ponto de Estado 1 *********************')
-    print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs)
-    print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm)
-    print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo)
-    print(' Umidade relativa(%%)..................... %7.3f' % ur)
-    print(' Razão de mistura (g/kg) ................ %7.3f' % rm)
-    print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv)
-    print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs)
-    print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-    print(' entalpia(kJ/kg) ........................ %7.3f' % e)
-    print(' Volume específico(m3/kg) ............... %7.3f' % ve)
-    #                      Ponto de Estado 2
-    ur2 = ur2 * 100.
-    rm2 = rm2 * 1000.
-    print('\n************** Ponto de Estado 2 *********************')
-    print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs2)
-    print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm2)
-    print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo2)
-    print(' Umidade relativa(%%)..................... %7.3f' % ur2)
-    print(' Razão de mistura (g/kg) ................ %7.3f' % rm2)
-    print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv2)
-    print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs2)
-    print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-    print(' entalpia(kJ/kg) ........................ %7.3f' % e2)
-    print(' Volume específico(m3/kg) ............... %7.3f' % ve2)
+    ur=ur*100.
+    rm=rm*1000.
+    ur2=ur2*100.
+    rm2=rm2*1000.
+    resultados1()
 
 def u_adiabatica_tbs():
     # Processo 2
     # Umidificação adiabática - f(tbs1, ur1, tbs2)
-    global tbs, tbm, patm, tbs, ur, pvs, pv, rm, tpo, ve, e
+    global tbs,  tbm,  tpo,  ur,  rm,  pvs,  pv,  ve,  e, patm
+    global tbs2, tbm2, tpo2, ur2, rm2, pvs2, pv2, ve2, e2
     #
     # Dados Pontos de Estado 1 e 2
     print('********* Ponto de Estado 1 **********')
@@ -282,42 +262,19 @@ def u_adiabatica_tbs():
             break
     tpo2 = temperatura_ponto_orvalho(pv2)
     ve2  = volume_especifico(tbs2,rm2)
-    # Resultados do  Ponto de Estado 1 e 2
-    #                      Ponto de Estado 1
+    # Resultados
     ur = ur * 100.
     rm = rm * 1000.
-    print('\n************** Aquecimento / Resfriamento***************')
-    print('************** Ponto de Estado 1 *********************')
-    print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs)
-    print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm)
-    print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo)
-    print(' Umidade relativa(%%)..................... %7.3f' % ur)
-    print(' Razão de mistura (g/kg) ................ %7.3f' % rm)
-    print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv)
-    print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs)
-    print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-    print(' Entalpia(kJ/kg) ........................ %7.3f' % e)
-    print(' Volume específico(m3/kg) ............... %7.3f' % ve)
-    #                      Ponto de Estado 2
     ur2 = ur2 * 100.
     rm2 = rm2 * 1000.
-    print('\n************** Ponto de Estado 2 *********************')
-    print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs2)
-    print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm2)
-    print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo2)
-    print(' Umidade relativa(%%)..................... %7.3f' % ur2)
-    print(' Razão de mistura (g/kg) ................ %7.3f' % rm2)
-    print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv2)
-    print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs2)
-    print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-    print(' Entalpia(kJ/kg) ........................ %7.3f' % e2)
-    print(' Volume específico(m3/kg) ............... %7.3f' % ve2)
+    resultados1()
 
 def u_adiabatica_ur():
     # Processo 3
     # Umidificação adiabática - f(tbs1, ur1, ur2)
     #
-    global tbs, tbm, patm, tbs, ur, pvs, pv, rm, tpo, ve, e
+    global tbs,  tbm,  tpo,  ur,  rm,  pvs,  pv,  ve,  e, patm
+    global tbs2, tbm2, tpo2, ur2, rm2, pvs2, pv2, ve2, e2
     #
     # Input - Ponto de Estados 1 and 2
     print('********* Ponto de Estado 1 **********')
@@ -357,41 +314,18 @@ def u_adiabatica_ur():
         tpo2 = temperatura_ponto_orvalho(pv2)
     ve2 = volume_especifico(tbs2,rm2)
     # Resultados do Ponto de Estado 1 e 2
-    #                      Ponto de Estado 1
     ur = ur * 100.
     rm = rm * 1000.
-    print('\n************** Umidificação Adiabática *****************')
-    print('************** Ponto de Estado 1 *********************')
-    print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs)
-    print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm)
-    print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo)
-    print(' >Umidade relativa(%%)................... %7.3f' % ur)
-    print(' Razão de mistura (g/kg) ................ %7.3f' % rm)
-    print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv)
-    print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs)
-    print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-    print(' Entalpia(kJ/kg) ........................ %7.3f' % e)
-    print(' Volume específico(m3/kg) ............... %7.3f' % ve)
-    #                      Ponto de Estado 2
     ur2 = ur2 * 100.
     rm2 = rm2 * 1000.
-    print('\n************** Ponto de Estado 2 *********************')
-    print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs2)
-    print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm2)
-    print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo2)
-    print(' >Umidade relativa(%%).................... %7.3f' % ur2)
-    print(' Razão de mistura (g/kg) ................ %7.3f' % rm2)
-    print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv2)
-    print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs2)
-    print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-    print(' Entalpia(kJ/kg) ........................ %7.3f' % e2)
-    print(' Volume específico(m3/kg) ............... %7.3f' % ve2)
+    resultados1()
 
 def u_adiabatica_rm():
     # Processo 4
     # Umidificação adiabática -  f (tbs1, rm1, rm2).
     #
-    global tbs, tbm, patm, tbs, ur, pvs, pv, rm, tpo, ve, e
+    global tbs,  tbm,  tpo,  ur,  rm,  pvs,  pv,  ve,  e, patm
+    global tbs2, tbm2, tpo2, ur2, rm2, pvs2, pv2, ve2, e2
     #
     # Input - Ponto de Estados 1 and 2
     print('********* Ponto de Estado 1 **********')
@@ -434,39 +368,18 @@ def u_adiabatica_rm():
                 rm2=razao_mistura1(pv2)
                 ve2=volume_especifico(tbs2,rm2)
             # Resultados do Ponto de Estado 1 e 2
-            #                      Ponto de Estado 1
             ur=ur*100.
-            rm=rm*1000.
-            print('\n************** Umidificação Adiabática *****************')
-            print('************** Ponto de Estado 1 *********************')
-            print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs)
-            print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm)
-            print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo)
-            print(' Umidade relativa(%%)..................... %7.3f' % ur)
-            print(' >Razão de mistura (g/kg) ............... %7.3f' % rm)
-            print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv)
-            print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs)
-            print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-            print(' Entalpia(kJ/kg) ........................ %7.3f' % e)
-            print(' Volume específico(m3/kg) ............... %7.3f' % ve)
-            #                      Ponto de Estado 2
+            rm=rm*1000.            
             ur2 = ur2 * 100.
             rm2 = rm2 * 1000.
-            print('\n************** Ponto de Estado 2 *********************')
-            print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs2)
-            print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm2)
-            print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo2)
-            print(' Umidade relativa(%%)..................... %7.3f' % ur2)
-            print(' >Razão de mistura (g/kg) ............... %7.3f' % rm2)
-            print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv2)
-            print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs2)
-            print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-            print(' Entalpia(kJ/kg) ........................ %7.3f' % e2)
-            print(' Volume específico(m3/kg) ............... %7.3f' % ve2)
+            resultados1()
 
 def mistura_fluxos():
     # Processo 5
     # Mistura de dois fluxos de ar
+    global tbs1, tbm1, tpo1, ur1, rm1, pvs1, pv1, ve1, e1, q1, patm
+    global tbs2, tbm2, tpo2, ur2, rm2, pvs2, pv2, ve2, e2, q2
+    global tbs3, tbm3, tpo3, ur3, rm3, pvs3, pv3, ve3, e3, q3
     # Input - Ponto de Estados 1 e 2
     print('********* Ponto de Estado 1 **********')
     tbs1=float(input('Temperatura bulbo seco(ºC)... '))
@@ -490,21 +403,6 @@ def mistura_fluxos():
     ve1=  volume_especifico(tbs1,rm1)
     tbm1 = temperatura_b_molhado(tbs1, e1)
     tpo1 = temperatura_ponto_orvalho(pv1)
-    #   Output  Ponto de Estado
-    urr1=ur1*100.
-    rma1=rm1*1000.
-    print('************** Ponto de Estado 1 *********************')
-    print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs1)
-    print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm1)
-    print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo1)
-    print(' Umidade relativa(%%)..................... %7.3f'% urr1)
-    print(' Razão de mistura (g/kg) ................ %7.3f' % rma1)
-    print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv1)
-    print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs1)
-    print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-    print(' Entalpia(kJ/kg) ........................ %7.3f' % e1)
-    print(' Volume específico(m3/kg) ............... %7.3f' % ve1)
-    print('  ***** Vazão (m3/h) .................... %7.3f' % q1)
     # Ponto de Estado 2
     pvs2=pressao_vapor_saturado(tbs2)
     pv2= ur2*pvs2
@@ -513,21 +411,6 @@ def mistura_fluxos():
     ve2=volume_especifico(tbs2,rm2)
     tbm2=temperatura_b_molhado(tbs2,e2)
     tpo2=temperatura_ponto_orvalho(pv2)
-    # Output - Ponto de Estado 2
-    urr2=ur2*100.
-    rma2=rm2*1000.
-    print('\n************** Ponto de Estado 2 *******************')
-    print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs2)
-    print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm2)
-    print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo2)
-    print(' Umidade relativa(%%)..................... %7.3f'% urr2)
-    print(' Razão de mistura (g/kg) ................ %7.3f' % rma2)
-    print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv2)
-    print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs2)
-    print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-    print(' Entalpia(kJ/kg) ........................ %7.3f' % e2)
-    print(' Volume específico(m3/kg) ............... %7.3f' % ve2)
-    print('  ***** Vazão (m3/h) .................... %7.3f' % q2)
     # Ponto de Estado 3 -  Mistura de dois fluxos de ar
     q1 = q1 * ve1
     q2 = q2 * ve2
@@ -553,24 +436,20 @@ def mistura_fluxos():
         tpo3=temperatura_ponto_orvalho(pv3)
         tbm3=temperatura_b_molhado(tbs3,e3)
         q3=(q1+q2)/ve3
-        # Output - Ponto de Estado da Nistura
-        ur3=ur3*100.
-        rm3=rm3*1000.
-        print('\n************** Ponto de Estado Mistura ************')
-        print(' Temperatura de bulbo seco(ºC) .......... %7.3f' % tbs3)
-        print(' Temperatura de bulbo molhado(ºC) ....... %7.3f' % tbm3)
-        print(' Temperatura do ponto de orvalho(ºC) .... %7.3f' % tpo3)
-        print(' Umidade relativa(%%)..................... %7.3f' % ur3)
-        print(' Razão de mistura (g/kg) ................ %7.3f' % rm3)
-        print(' Pressão parcial de vapor(kPa)........... %7.3f' % pv3)
-        print(' Pressão de vapor de saturação(kPa) ..... %7.3f' % pvs3)
-        print(' Pressão barométrica(kPa) ............... %7.3f' % patm)
-        print(' Entalpia(kJ/kg) ........................ %7.3f' % e3)
-        print(' Volume específico(m3/kg) ............... %7.3f' % ve3)
-        print('  ***** Vazão total(m3/h) ............... %7.3f' % q3)
+        q2=q2/ve2
+        q1=q1/ve1
+        # Resultados dos 3 pontos de estados
+        ur1 = ur1 * 100.
+        ur2 = ur2 * 100.
+        ur3 = ur3 * 100.
+        rm1 = rm1 * 1000.
+        rm2 = rm2 * 1000.
+        rm3 = rm3 * 1000.
+        resultados2()
 
-def qual_ponto():
+def qual_ponto():  
     # cálculo Ponto de Estado  - input: tbs com outra propriedade
+    # from prettytable import PrettyTable
     global tbs, tbm, patm, tbs, ur, pvs, pv, rm, tpo, ve
     global e
     print('\n Ponto de Estado - Dados conhecidos: ')
@@ -587,19 +466,20 @@ def qual_ponto():
     # Output
     ur=ur*100.
     rm=rm*1000.
-    print('')
-    print('*************** Ponto de Estado ***************')
-    print('Temperatura de bulbo seco (ºC)......... %7.3f' %tbs)
-    print('Temperatura de bulbo molhado (ºC)...... %7.3f' %tbm)
-    print('Temperatura de ponto de orvalho (ºC) .. %7.3f' %tpo)
-    print('Umidade relativa (%%) ................. %8.3f' %ur)
-    print('Razão de mistura (g/kg)................ %7.3f' %rm)
-    print('Pressão barométrica (kPa).............. %7.3f' %patm)
-    print('Pressão de vapor saturado (kPa)........ %7.3f' %pvs)
-    print('Pressão parcial de vapor (kPa)......... %7.3f' %pv)
-    print('Entalpia (kJ/kg)....................... %7.3f' %e)
-    print('Volume específico (m3/kg).............. %7.3f' %ve)
-
+    # Tabela de resultados do ponto de estado
+    tab_res = PrettyTable(["Propriedades","Ponto 1"])
+    tab_res.add_row(["Temperatura de bulbo seco (ºC)", "{0:7.1f}".format(tbs)]) 
+    tab_res.add_row(["Temperatura de bulbo molhado (ºC)", "{0:7.1f}".format(tbm)]) 
+    tab_res.add_row(["Temperatura de ponto de orvalho (ºC)", "{0:7.1f}".format(tpo)])
+    tab_res.add_row(["Umidade relativa (%)", "{0:7.1f}".format(ur)])
+    tab_res.add_row(["Razão de mistura (g/kg)", "{0:7.3f}".format(rm)])
+    tab_res.add_row(["Pressão barométrica (kPa)", "{0:7.1f}".format(patm)])
+    tab_res.add_row(["Pressão de vapor saturado (kPa)", "{0:7.2f}".format(pvs)])
+    tab_res.add_row(["Pressão parcial de vapor (kPa)", "{0:7.2f}".format(pv)])
+    tab_res.add_row(["Entalpia (kJ/kg)", "{0:7.2f}".format(e)])
+    tab_res.add_row(["Volume específico (m3/kg)", "{0:7.3f}".format(ve)])
+    print(tab_res)
+  
 def qual_processo():
     global proc
     print('\n************************* Processos   ******************************* ')
@@ -620,14 +500,76 @@ def qual_processo():
         u_adiabatica_rm()
     else:
         mistura_fluxos()
+
+def resultados1():  
+  # processos de 1 a 4
+  global tbs2, tbm2, ur2, pvs2, pv2, rm2, tpo2, ve2, e2
+  # Tabela de resultados do ponto de estado
+  tab_res = PrettyTable(["Propriedades","Ponto 1","Ponto 2"])
+  tab_res.add_row(["Temperatura de bulbo seco (ºC)", 
+                     "{0:7.1f}".format(tbs), "{0:7.1f}".format(tbs2)])
+  tab_res.add_row(["Temperatura de bulbo molhado (ºC)", 
+                     "{0:7.1f}".format(tbm), "{0:7.1f}".format(tbm2)]) 
+  tab_res.add_row(["Temperatura de ponto de orvalho (ºC)", 
+                     "{0:7.1f}".format(tpo), "{0:7.1f}".format(tpo2)])
+  tab_res.add_row(["Umidade relativa (%)", 
+                     "{0:7.1f}".format(ur), "{0:7.1f}".format(ur2)])
+  tab_res.add_row(["Razão de mistura (g/kg)",
+                      "{0:7.3f}".format(rm), "{0:7.3f}".format(rm)])
+  tab_res.add_row(["Pressão barométrica (kPa)",
+                      "{0:7.1f}".format(patm), "{0:7.1f}".format(patm)])
+  tab_res.add_row(["Pressão de vapor saturado (kPa)",
+                      "{0:7.2f}".format(pvs), "{0:7.2f}".format(pvs2)])
+  tab_res.add_row(["Pressão parcial de vapor (kPa)",
+                      "{0:7.2f}".format(pv), "{0:7.2f}".format(pv2)])
+  tab_res.add_row(["Entalpia (kJ/kg)",
+                      "{0:7.2f}".format(e), "{0:7.2f}".format(e2)])
+  tab_res.add_row(["Volume específico (m3/kg)",
+                      "{0:7.3f}".format(ve),  "{0:7.3f}".format(ve2)])
+  print(tab_res)
+
+def resultados2():
+  # processo  5 
+  global tbs1, tbm1, tpo1, ur1, rm1, pvs1, pv1, ve1, e1, q1
+  global tbs2, tbm2, tpo2, ur2, rm2, pvs2, pv2, ve2, e2, q2
+  global tbs3, tbm3, tpo3, ur3, rm3, pvs3, pv3, ve3, e3, q3
+  # cabeçalho da tabela
+  tab_res = PrettyTable(["Propriedades","Ponto 1","Ponto 2", "Ponto 3"])
+  # linhas da tabela
+  tab_res.add_row(["Temperatura de bulbo seco (ºC)", 
+    "{0:7.1f}".format(tbs1), "{0:7.1f}".format(tbs2), "{0:7.1f}".format(tbs3)])
+  tab_res.add_row(["Temperatura de bulbo molhado (ºC)",
+    "{0:7.1f}".format(tbm1), "{0:7.1f}".format(tbm2), "{0:7.1f}".format(tbm3)]) 
+  tab_res.add_row(["Temperatura de ponto de orvalho (ºC)",
+    "{0:7.1f}".format(tpo1),"{0:7.1f}".format(tpo2), "{0:7.1f}".format(tpo3)])
+  tab_res.add_row(["Umidade relativa (%)",
+    "{0:7.1f}".format(ur1), "{0:7.1f}".format(ur2), "{0:7.1f}".format(ur3)])
+  tab_res.add_row(["Razão de mistura (g/kg)",
+    "{0:7.3f}".format(rm1), "{0:7.3f}".format(rm2), "{0:7.3f}".format(rm3)])
+  tab_res.add_row(["Pressão barométrica (kPa)",
+    "{0:7.1f}".format(patm), "{0:7.1f}".format(patm), "{0:7.1f}".format(patm)])
+  tab_res.add_row(["Pressão de vapor saturado (kPa)",
+    "{0:7.2f}".format(pvs1), "{0:7.2f}".format(pvs2),"{0:7.2f}".format(pvs3)])
+  tab_res.add_row(["Pressão parcial de vapor (kPa)",
+    "{0:7.2f}".format(pv1), "{0:7.2f}".format(pv2), "{0:7.2f}".format(pv3)])
+  tab_res.add_row(["Entalpia (kJ/kg)",
+    "{0:7.2f}".format(e1), "{0:7.2f}".format(e2), "{0:7.2f}".format(e3)])
+  tab_res.add_row(["Volume específico (m3/kg)",
+    "{0:7.3f}".format(ve1),  "{0:7.3f}".format(ve2),  "{0:7.3f}".format(ve3)])
+  tab_res.add_row(["Vazão de ar (m3/h)",
+    "{0:7.2f}".format(q1), "{0:7.2f}".format(q2), "{0:7.2f}".format(q3)])
+  # tabela pronta,
+  print(tab_res)
+
 #
 # ############################################# fim definição de funçôes #######
 #
 # ###################### programa principal  ###################################
 if __name__ == '__main__':
     import numpy as np
+    from prettytable import PrettyTable
     # apresentação da versão
-    print_hi('\n Programa GRAPSI - versão 1.0 python \n')
+    print_hi('\n Programa GRAPSI - versão 0.2 python \n')
     # calcula a pressão atmosférica em função da altitude
     patm = p_atm()
     # tipo de cálculo
